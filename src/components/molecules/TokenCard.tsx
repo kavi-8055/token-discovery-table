@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { Card } from '@/components/ui/card';
 import { PriceDisplay } from '@/components/atoms/PriceDisplay';
 import { PercentageChange } from '@/components/atoms/PercentageChange';
-import { TokenPopover } from '@/components/molecules/TokenPopover';
 import { Token } from '@/lib/redux/slices/tokensSlice';
 import { cn } from '@/lib/utils';
 
@@ -23,29 +22,25 @@ export const TokenCard = memo(function TokenCard({
   return (
     <Card
       className={cn(
-        'p-4 hover:shadow-lg transition-all duration-200 hover:scale-[1.02]',
+        'p-4 hover:shadow-lg transition-all duration-200 cursor-pointer hover:scale-[1.02]',
         className
       )}
+      onClick={onClick}
     >
       <div className="flex items-start gap-3">
-        {/* Token Image - With Hover Card */}
-        <TokenPopover token={token}>
-          <div 
-            className="relative h-12 w-12 flex-shrink-0 cursor-help"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <Image
-              src={token.imageUrl || '/token-placeholder.svg'}
-              alt={token.name}
-              fill
-              className="rounded-full object-cover"
-              unoptimized
-            />
-          </div>
-        </TokenPopover>
+        {/* Token Image */}
+        <div className="relative h-12 w-12 flex-shrink-0">
+          <Image
+            src={token.imageUrl || '/token-placeholder.svg'}
+            alt={token.name}
+            fill
+            className="rounded-full object-cover"
+            unoptimized
+          />
+        </div>
 
-        {/* Token Info - Clickable for Modal */}
-        <div className="flex-1 min-w-0 cursor-pointer" onClick={onClick}>
+        {/* Token Info */}
+        <div className="flex-1 min-w-0">
           <div className="flex items-center justify-between mb-1">
             <h3 className="font-semibold text-sm truncate">{token.name}</h3>
             <PriceDisplay

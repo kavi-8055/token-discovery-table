@@ -31,36 +31,43 @@ export const TokenRow = memo(function TokenRow({
     return num.toLocaleString();
   };
 
+  const handleImageClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+  };
+
   return (
     <TableRow
       className={cn(
-        'hover:bg-muted/50 transition-colors',
+        'hover:bg-muted/50 cursor-pointer transition-colors',
         className
       )}
+      onClick={onClick}
     >
       {/* Token Info */}
       <TableCell className="font-medium">
-        <TokenPopover token={token}>
-          <div className="flex items-center gap-3 cursor-help">
-            <div className="relative h-8 w-8 flex-shrink-0">
-              <Image
-                src={token.imageUrl || '/token-placeholder.svg'}
-                alt={token.name}
-                fill
-                className="rounded-full object-cover"
-                unoptimized
-              />
-            </div>
-            <div className="min-w-0">
-              <div className="font-semibold text-sm truncate">{token.name}</div>
-              <div className="text-xs text-muted-foreground">{token.symbol}</div>
-            </div>
+        <div className="flex items-center gap-3">
+          <div onClick={handleImageClick}>
+            <TokenPopover token={token}>
+              <div className="relative h-8 w-8 flex-shrink-0 cursor-help">
+                <Image
+                  src={token.imageUrl || '/token-placeholder.svg'}
+                  alt={token.name}
+                  fill
+                  className="rounded-full object-cover"
+                  unoptimized
+                />
+              </div>
+            </TokenPopover>
           </div>
-        </TokenPopover>
+          <div className="min-w-0">
+            <div className="font-semibold text-sm truncate">{token.name}</div>
+            <div className="text-xs text-muted-foreground">{token.symbol}</div>
+          </div>
+        </div>
       </TableCell>
 
       {/* Price */}
-      <TableCell onClick={onClick} className="cursor-pointer">
+      <TableCell>
         <PriceDisplay
           price={token.price}
           previousPrice={previousPrice}
@@ -69,22 +76,22 @@ export const TokenRow = memo(function TokenRow({
       </TableCell>
 
       {/* 24h Change */}
-      <TableCell onClick={onClick} className="cursor-pointer">
+      <TableCell>
         <PercentageChange value={token.priceChange24h} />
       </TableCell>
 
       {/* Volume */}
-      <TableCell onClick={onClick} className="cursor-pointer text-sm">
+      <TableCell className="text-sm">
         {formatNumber(token.volume24h)}
       </TableCell>
 
       {/* Market Cap */}
-      <TableCell onClick={onClick} className="cursor-pointer text-sm">
+      <TableCell className="text-sm">
         {formatNumber(token.marketCap)}
       </TableCell>
 
       {/* Liquidity */}
-      <TableCell onClick={onClick} className="cursor-pointer">
+      <TableCell>
         <TooltipWrapper content="Total liquidity available for trading">
           <div className="flex items-center gap-1 text-sm">
             <Droplet className="h-3 w-3 text-blue-500" />
@@ -94,7 +101,7 @@ export const TokenRow = memo(function TokenRow({
       </TableCell>
 
       {/* Holders */}
-      <TableCell onClick={onClick} className="cursor-pointer">
+      <TableCell>
         <TooltipWrapper content="Number of unique token holders">
           <div className="flex items-center gap-1 text-sm">
             <Users className="h-3 w-3 text-purple-500" />
