@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback, useMemo, useRef } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks';
 import { setTokens, updateTokenPrice } from '@/lib/redux/slices/tokensSlice';
 import { generateMockTokens } from '@/lib/services/mockData';
@@ -12,9 +12,9 @@ import { Token } from '@/lib/redux/slices/tokensSlice';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { LayoutGrid, LayoutList } from 'lucide-react';
+import { StatsBar } from '@/components/molecules/StatsBar';
 import { FilterDropdown } from '@/components/molecules/FilterDropdown';
 import { SearchBar } from '@/components/molecules/SearchBar';
-import { StatsBar } from '@/components/molecules/StatsBar';
 
 type CategoryType = 'new' | 'final' | 'migrated';
 
@@ -33,7 +33,7 @@ export default function Home() {
   });
   
   // Store previous prices - simple state approach
-  const [priceHistory, setPriceHistory] = useState<Map<string, number>>(new Map());
+  const [priceHistory] = useState<Map<string, number>>(new Map());
 
   // Initialize tokens
   useEffect(() => {
@@ -154,7 +154,7 @@ export default function Home() {
             </TabsList>
 
             <div className="flex items-center gap-3 w-full sm:w-auto">
-              <SearchBar onSearch={handleSearch} />
+              <SearchBar onSearch={handleSearch} value={searchQuery} />
               <FilterDropdown
                 filters={[
                   { label: 'Rising', value: 'rising', checked: priceFilters.rising },

@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo } from 'react';
 import { Search, X } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -6,21 +6,19 @@ import { Button } from '@/components/ui/button';
 interface SearchBarProps {
   onSearch: (query: string) => void;
   placeholder?: string;
+  value?: string;
 }
 
 export const SearchBar = memo(function SearchBar({
   onSearch,
   placeholder = 'Search tokens...',
+  value = '',
 }: SearchBarProps) {
-  const [query, setQuery] = useState('');
-
-  const handleChange = (value: string) => {
-    setQuery(value);
-    onSearch(value);
+  const handleChange = (newValue: string) => {
+    onSearch(newValue);
   };
 
   const handleClear = () => {
-    setQuery('');
     onSearch('');
   };
 
@@ -30,11 +28,11 @@ export const SearchBar = memo(function SearchBar({
       <Input
         type="text"
         placeholder={placeholder}
-        value={query}
+        value={value}
         onChange={(e) => handleChange(e.target.value)}
         className="pl-9 pr-9"
       />
-      {query && (
+      {value && (
         <Button
           variant="ghost"
           size="sm"

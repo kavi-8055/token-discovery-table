@@ -1,59 +1,88 @@
-# Axiom Trade - Token Discovery Table
+# Token Discovery Table
 
-A pixel-perfect, high-performance token trading table built with Next.js 14, TypeScript, and Tailwind CSS. Features real-time price updates, advanced filtering, and comprehensive data visualization.
+A modern, high-performance token trading dashboard built with Next.js 14, featuring real-time price updates, advanced filtering, and comprehensive data visualization.
 
-![Axiom Trade Preview](./public/preview.png)
+**Live Demo:** [https://token-discovery-table-vercel.vercel.app](https://token-discovery-table-vercel.vercel.app)
 
-## 🚀 Features
+**GitHub Repository:** [https://github.com/kavi-8055/token-discovery-table](https://github.com/kavi-8055/token-discovery-table)
+
+![Desktop Table View](./screenshots/Desktoptable%20view.png)
+
+## Features
 
 ### Core Functionality
-- ✅ **Real-time Price Updates** - WebSocket simulation with smooth color transitions
-- ✅ **Three Token Categories** - New Pairs, Final Stretch, and Migrated tokens
-- ✅ **Advanced Sorting** - Sort by any column (price, volume, market cap, etc.)
-- ✅ **Search & Filters** - Filter tokens by name/symbol and price movement
-- ✅ **Dual View Modes** - Table view for desktop, Grid view for mobile
-- ✅ **Interactive UI** - Hover cards, tooltips, modals for detailed token info
+- Real-time price updates with WebSocket simulation
+- Three token categories: New Pairs, Final Stretch, and Migrated
+- Column-based sorting for all data fields
+- Advanced search and filtering capabilities
+- Dual view modes: Table view for desktop, Grid view for mobile
+- Interactive hover cards and modals for detailed token information
+- Comprehensive statistics dashboard
 
-### Technical Highlights
-- ⚡ **Performance Optimized** - Memoized components, <100ms interactions
-- 📱 **Fully Responsive** - Works perfectly from 320px to 4K displays
-- 🎨 **Pixel-Perfect Design** - Clean, modern UI matching design specifications
-- 🏗️ **Atomic Architecture** - Reusable atoms, molecules, and organisms
-- 🛡️ **Type-Safe** - Strict TypeScript with comprehensive error handling
-- 🔄 **State Management** - Redux Toolkit + React Query for optimal data flow
+### Technical Implementation
+- Performance optimized with memoized components
+- Fully responsive design from 320px to 4K displays
+- Type-safe TypeScript implementation with strict mode
+- Atomic design architecture for maximum reusability
+- Comprehensive error handling and loading states
+- Clean, maintainable codebase following best practices
 
-## 🛠️ Tech Stack
+## Technology Stack
 
-- **Framework:** Next.js 14 (App Router)
-- **Language:** TypeScript (strict mode)
-- **Styling:** Tailwind CSS
-- **State Management:** Redux Toolkit
-- **Data Fetching:** React Query
-- **UI Components:** Radix UI / shadcn/ui
-- **Icons:** Lucide React
-- **Animations:** CSS Keyframes + Framer Motion concepts
+**Framework & Language**
+- Next.js 14 with App Router
+- TypeScript (strict mode)
+- React 18
 
-## 📦 Installation
+**Styling & UI**
+- Tailwind CSS
+- Radix UI primitives
+- shadcn/ui component library
+- Lucide React icons
+
+**State Management**
+- Redux Toolkit for global state
+- React Query for server state
+- Local state management with React hooks
+
+**Build & Deploy**
+- Vercel for hosting
+- Git for version control
+
+## Getting Started
+
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/axiom-token-table.git
-cd axiom-token-table
+git clone https://github.com/kavi-8055/token-discovery-table.git
+cd token-discovery-table
 
 # Install dependencies
 npm install
 
 # Run development server
 npm run dev
-
-# Open http://localhost:3000
 ```
 
-## 🏗️ Project Structure
+Open [http://localhost:3000](http://localhost:3000) to view the application.
+
+### Build for Production
+
+```bash
+npm run build
+npm start
+```
+
+## Project Structure
 
 ```
 src/
-├── app/                      # Next.js App Router
+├── app/                      # Next.js app directory
 │   ├── page.tsx             # Main dashboard page
 │   ├── layout.tsx           # Root layout with providers
 │   └── globals.css          # Global styles and animations
@@ -75,7 +104,7 @@ src/
 │   │   ├── TokenTable.tsx
 │   │   ├── TokenGrid.tsx
 │   │   └── TokenDetailsModal.tsx
-│   └── ui/                  # shadcn/ui components
+│   └── ui/                  # shadcn/ui base components
 ├── lib/
 │   ├── redux/               # Redux store and slices
 │   │   ├── store.ts
@@ -85,60 +114,91 @@ src/
 │   ├── services/            # Business logic
 │   │   ├── mockData.ts
 │   │   └── websocket.ts
-│   ├── providers.tsx        # App providers wrapper
+│   ├── providers.tsx        # Context providers
 │   └── utils.ts             # Utility functions
-└── types/                   # TypeScript type definitions
+└── types/                   # TypeScript definitions
 ```
 
-## 🎯 Key Features Implementation
+## Key Features
 
-### 1. Real-time Price Updates
-Mock WebSocket service simulates live price changes with smooth animations:
-- Green flash for price increases
-- Red flash for price decreases
-- Updates every 2-5 seconds randomly
+### Real-time Price Updates
+The application simulates live price changes using a WebSocket service. Price changes are highlighted with smooth color transitions - green for increases and red for decreases. Updates occur every 2-5 seconds to provide a realistic trading experience.
 
-### 2. Responsive Design
-- **Desktop (1024px+):** Full table view with all columns
-- **Tablet (768px-1023px):** Horizontal scroll table
-- **Mobile (<768px):** Auto-switches to card grid view
+### Responsive Design
+The interface adapts seamlessly across all screen sizes:
+- **Desktop (1024px+):** Full table view with all columns visible
+- **Tablet (768px-1023px):** Horizontal scrolling table
+- **Mobile (<768px):** Automatically switches to card-based grid layout
 
-### 3. Performance Optimizations
-- React.memo for component memoization
-- useMemo/useCallback for expensive computations
-- Virtualization-ready architecture
-- Lazy loading for modals and tooltips
+### State Management
+State is managed efficiently across multiple layers:
+- Redux Toolkit handles global token state and user preferences
+- React Query manages data fetching and caching
+- Local component state for UI interactions
 
-### 4. State Management
-- **Redux Toolkit:** Global token state, sorting preferences
-- **React Query:** Data fetching, caching, and synchronization
-- **Local State:** UI state (modals, filters, search)
+### Performance Optimizations
+- Component memoization with React.memo
+- Expensive computations cached with useMemo and useCallback
+- Optimized re-renders through proper dependency arrays
+- Efficient data structures for quick lookups
 
-## 📸 Screenshots
+## Screenshots
 
-### Desktop View
-![Desktop Table View](./screenshots/desktop-table.png)
+### Desktop Views
+
+**Table View**
+![Desktop Table](./screenshots/Desktoptable%20view.png)
+
+**Modal View**
+![Token Details Modal](./screenshots/Desktop_modal.png)
+
+**Hover Card**
+![Hover Card Preview](./screenshots/Desktophovercard.png)
+
+**Grid View**
+![Grid Layout](./screenshots/Desktop_gridview.png)
 
 ### Mobile View
-![Mobile Grid View](./screenshots/mobile-grid.png)
+![Mobile Responsive](./screenshots/Mobileview.png)
 
-### Token Details Modal
-![Token Modal](./screenshots/token-modal.png)
+## Responsive Breakpoints
 
-### Hover Card Preview
-![Hover Card](./screenshots/hover-card.png)
-
-## 🎨 Responsive Breakpoints
-
-| Breakpoint | Width | View |
-|------------|-------|------|
-| Mobile | 320px - 767px | Card Grid (Auto) |
+| Device Type | Width Range | Layout |
+|-------------|-------------|--------|
+| Mobile | 320px - 767px | Card Grid |
 | Tablet | 768px - 1023px | Scrollable Table |
-| Desktop | 1024px+ | Full Table |
+| Desktop | 1024px+ | Full Table View |
 
-## 🚀 Deployment
+## Development
 
-### Deploy to Vercel
+### Code Quality
+- Strict TypeScript configuration
+- ESLint with recommended rules
+- Comprehensive error boundaries
+- Consistent code formatting
+- DRY principles throughout
+
+### Testing the Application
+```bash
+# Type checking
+npm run type-check
+
+# Linting
+npm run lint
+
+# Production build test
+npm run build
+```
+
+## Deployment
+
+The application is deployed on Vercel with automatic deployments enabled. Every push to the main branch triggers a new deployment.
+
+### Deploy Your Own
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/kavi-8055/token-discovery-table)
+
+Or manually:
 
 ```bash
 # Install Vercel CLI
@@ -146,71 +206,33 @@ npm i -g vercel
 
 # Deploy
 vercel
-
-# Or connect GitHub repo to Vercel dashboard
 ```
 
-**Live Demo:** [https://axiom-token-table.vercel.app](https://axiom-token-table.vercel.app)
+## Performance Metrics
 
-## 🎥 Demo Video
+- Lighthouse Score: 90+ (Desktop & Mobile)
+- First Contentful Paint: <1.5s
+- Time to Interactive: <2.5s
+- Interaction Latency: <100ms
 
-[Watch Demo Video](https://youtube.com/watch?v=your-video-id)
+## Contributing
 
-## ⚡ Performance Metrics
+Contributions are welcome. Please ensure code quality standards are maintained and all tests pass before submitting pull requests.
 
-- **Lighthouse Score:** 95+ (Desktop & Mobile)
-- **First Contentful Paint:** <1.5s
-- **Time to Interactive:** <2.5s
-- **Interaction Latency:** <100ms
+## License
 
-## 🧪 Testing
+MIT License - see LICENSE file for details
 
-```bash
-# Run type checking
-npm run type-check
+## Acknowledgments
 
-# Run linting
-npm run lint
+- Design inspiration from Axiom Trade
+- UI components from shadcn/ui
+- Icons from Lucide React
 
-# Build for production
-npm run build
-```
+## Contact
 
-## 📝 Code Quality
-
-- ✅ Strict TypeScript mode enabled
-- ✅ ESLint configured with recommended rules
-- ✅ Comprehensive error boundaries
-- ✅ All components properly typed
-- ✅ DRY principles followed throughout
-
-## 🔧 Environment Variables
-
-No environment variables required for demo mode. For production with real APIs:
-
-```env
-NEXT_PUBLIC_API_URL=your_api_url
-NEXT_PUBLIC_WS_URL=your_websocket_url
-```
-
-## 🤝 Contributing
-
-Contributions welcome! Please read the contribution guidelines first.
-
-## 📄 License
-
-MIT License - feel free to use this project for learning or commercial purposes.
-
-## 👨‍💻 Author
-
-Built with ❤️ by kavipriya
-
-## 🙏 Acknowledgments
-
-- Design inspiration: [Axiom Trade](https://axiom.trade/pulse)
-- UI Components: [shadcn/ui](https://ui.shadcn.com)
-- Icons: [Lucide](https://lucide.dev)
+For questions or feedback, please open an issue on GitHub.
 
 ---
 
-**Star ⭐ this repo if you found it helpful!**
+Built with Next.js, TypeScript, and Tailwind CSS
