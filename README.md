@@ -4,7 +4,7 @@ A modern, high-performance token trading dashboard built with Next.js 14, featur
 
 **Live Demo:** [https://token-discovery-table-vercel.vercel.app](https://token-discovery-table-vercel.vercel.app)
 
-**Demo Video:** [Watch on YouTube](https://youtu.be/DFglRJbmY5g)
+**Demo Video:** [Watch on YouTube](https://www.youtube.com/watch?v=DFgIRJbmY5g)
 
 **GitHub Repository:** [https://github.com/kavi-8055/token-discovery-table](https://github.com/kavi-8055/token-discovery-table)
 
